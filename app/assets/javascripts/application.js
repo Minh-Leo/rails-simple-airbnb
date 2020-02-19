@@ -31,7 +31,7 @@ let displayMap = (coor) => {
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
     center: coor,
-    zoom: 12
+    zoom: 16
   });
 
   new mapboxgl.Marker()

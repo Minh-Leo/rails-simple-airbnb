@@ -50,7 +50,7 @@ ul {
 }
 
 #map {
-  width: 100vw;
+  width: 99vw;
   height: 400px;
   position: absolute;
   top: -50px;
@@ -82,11 +82,23 @@ form {
   }
 }
 
+.card-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #d04e46;
+  }
+}
+
 .show {
   width: 80%;
   margin-top: 100px;
-  opacity: 0.7;
-  border-radius: 10px;
+  opacity: 0.8;
+  border-radius: 20px;
   overflow: hidden;
 
   &:hover {
@@ -94,13 +106,13 @@ form {
   }
 }
 
-.vibrate {
+.scale {
   &:hover {
-    animation: wobble-hor-bottom 0.2s infinite;
+    animation: scale 1s infinite;
   }
 }
 
-@keyframes wobble-hor-bottom {
+@keyframes wobble {
   0%,
   100% {
     -webkit-transform: translateX(0%);
@@ -124,3 +136,14 @@ form {
   }
 }
 
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
