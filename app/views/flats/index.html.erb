@@ -1,0 +1,27 @@
+<h1>Flats from your area</h1>
+<%= link_to 'Be a host', new_flat_path, class: 'm-8' %>
+<br><br>
+
+<div class="flat-container">
+<ul>
+  <% @flats.each do |flat| %>
+    <li class="card" style="width: 80vw;">
+      <img class="card-img-top" src="<%= flat.picture_url %>" alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title"><%= link_to flat.name, flat_path(flat) %></h3>
+        <h5 class="card-text"><%= flat.address.capitalize %></h5>
+        <p class="card-text"><%= flat.description %></p>
+        <p class="card-text"><span> <%= flat.number_of_guests %> People </span> --
+          <span>$<%= flat.price_per_night %></span>
+        </p>
+
+      </div>
+
+      <%= link_to 'Delete', flat_path(flat),
+          method: :delete,
+          data: {confirm: 'Are you sure deleting this restaurant?'}, class: 'btn btn-danger'  %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+</div>
