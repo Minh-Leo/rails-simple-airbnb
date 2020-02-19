@@ -1,25 +1,37 @@
-<h1>Flats from your area</h1>
-<%= link_to 'Home', flats_path, class: 'm-8' %>
+<h1 class="show-title"><%= @flat.name %></h1>
+
+
 <br><br>
+
 
 <div class="flat-container">
 
 
-    <div class="card" style="width: 100vw;">
+    <div class="card show">
       <img class="card-img-top" src="<%= @flat.picture_url %>" alt="Card image cap">
       <div class="card-body">
         <h3 class="card-title"><%= link_to @flat.name, flat_path(@flat) %></h3>
         <h5 class="card-text"><%= @flat.address.capitalize %></h5>
         <p class="card-text"><%= @flat.description %></p>
         <p class="card-text"><span> <%= @flat.number_of_guests %> People </span> --
-          <span>$<%= @flat.price_per_night %></span>
+          <span><strong> $<%= @flat.price_per_night %></strong></span>
         </p>
 
       </div>
 
+      <%= link_to 'Home', flats_path, class: 'btn btn-dark' %>
+      <%= link_to 'Edit this post', edit_flat_path(@flat),
+          method: :get,
+          class: 'btn btn-light'  %>
       <%= link_to 'Delete', flat_path(@flat),
           method: :delete,
           data: {confirm: 'Are you sure deleting this restaurant?'}, class: 'btn btn-danger'  %>
     </div>
-    <br>
+
+    <div id="map"></div>
 </div>
+
+<!-- JS MAP -->
+<script>
+getCoordinates("<%= @flat.address %>");
+</script>

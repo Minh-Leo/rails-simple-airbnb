@@ -5,23 +5,22 @@
 <div class="flat-container">
 <ul>
   <% @flats.each do |flat| %>
-    <li class="card" style="width: 80vw;">
+    <li class="card" style="width: 40vw;">
       <img class="card-img-top" src="<%= flat.picture_url %>" alt="Card image cap">
       <div class="card-body">
         <h3 class="card-title"><%= link_to flat.name, flat_path(flat) %></h3>
         <h5 class="card-text"><%= flat.address.capitalize %></h5>
         <p class="card-text"><%= flat.description %></p>
         <p class="card-text"><span> <%= flat.number_of_guests %> People </span> --
-          <span>$<%= flat.price_per_night %></span>
+          <span><strong> $<%= flat.price_per_night %></strong></span>
         </p>
 
       </div>
 
-      <%= link_to 'Delete', flat_path(flat),
-          method: :delete,
-          data: {confirm: 'Are you sure deleting this restaurant?'}, class: 'btn btn-danger'  %>
+      <%= link_to 'More Info', flat_path(flat),
+          method: :get,
+          class: 'btn btn-dark'  %>
     </li>
-    <br>
   <% end %>
 </ul>
 </div>
